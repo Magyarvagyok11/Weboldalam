@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sport Weboldal</title>
+    <style>
+        /* Focis háttérkép beállítása */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-image: url('https://example.com/sport-background.jpg'); /* Cseréld ki a sportos háttérképre */
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            color: black;
+            margin: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7); /* Áttetsző háttér */
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffeb3b;
+        }
+
+        input[type="range"] {
+            width: 100%; /* A csúszka teljes szélességű legyen */
+            max-width: 600px; /* Maximális szélesség, hogy ne nyúljon túl nagyra */
+            margin: 20px 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* A fülek stílusa */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            margin: 0 5px;
+            transition: background-color 0.3s;
+            color: #333;
+        }
+
+        .tab:hover {
+            background-color: #ddd;
+        }
+
+        .tab.active {
+            background-color: #ddd;
+            font-weight: bold;
+        }
+
+        /* A tartalom, amely a fülek alatt jelenik meg */
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Kép stílusok */
+        .shoe-image {
+            width: 100%;
+            max-width: 300px;
+            margin-top: 10px;
+        }
+
+        /* Kezdőlap stílus */
+        .home-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .product {
+            margin: 10px;
+            text-align: center;
+            width: 30%;
+        }
+
+        .product img {
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .product h3 {
+            font-size: 20px;
+        }
+
+        /* Logó stílus */
+        .logo img {
+            width: 150px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Logó -->
+    <div class="logo">
+        <img src="file:///D:/Banki/Kovioli/Capture.PNG" alt="Sport Weboldal Logó">
+    </div>
+
+    <div class="container">
+        <!-- Kezdőlap fül -->
+        <div class="tabs">
+            <div class="tab active" id="homeTab">Kezdőlap</div>
+            <div class="tab" id="tab1">Saját termékünk Férfiaknak</div>
+            <div class="tab" id="tab2">Saját termékünk Nőknek</div>
+        </div>
+
+        <!-- Kezdőlap tartalom -->
+        <div class="tab-content active" id="homeContent">
+            <h2>Üdvözöljük a Kovácsdirect Sport Weboldalon!</h2>
+            <p>Válasszon a legújabb Adidas pólók és cipők közül!</p>
+
+            <div class="home-content">
+                <div class="product">
+                    <img src="file:///D:/Banki/Kovioli/adidas%20polo.jpg" alt="Adidas Póló">
+                    <h3>Adidas Póló</h3>
+                    <p>Akciós ár: 7000 Ft</p>
+                </div>
+                <div class="product">
+                    <img src="file:///D:/Banki/Kovioli/safffr.jpg" alt="Adidas Cipő">
+                    <h3>Adidas Cipő</h3>
+                    <p>Akciós ár: 15000 Ft</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Férfi cipők tartalom -->
+        <div class="tab-content" id="content1">
+            <h2>Cipők Férfiaknak</h2>
+            <p>Itt találhatók a férfi cipők legújabb modellei.</p>
+            <ul>
+                <li>Férfi sportcipő - 18000 Ft</li>
+            </ul>
+            <!-- A férfi sportcipőhöz tartozó kép -->
+            <img src="file:///D:/Banki/Kovioli/sajat%20csuka.jpg" alt="Férfi sportcipő" class="shoe-image">
+        </div>
+
+        <!-- Női cipők tartalom -->
+        <div class="tab-content" id="content2">
+            <h2>Cipők Nőknek</h2>
+            <p>Itt találhatók a női cipők legújabb modellei.</p>
+            <ul>
+                <li>Női sportcipő - 15000 Ft</li>
+            </ul>
+            <!-- A női sportcipőhöz tartozó kép -->
+            <img src="file:///D:/Banki/Kovioli/noi%20csuka.jfif" alt="Női sportcipő" class="shoe-image">
+        </div>
+
+        <!-- Ár csúszka -->
+        <h1>Válassza ki az árat</h1>
+        <p class="price">Aktuális ár: <span id="price">5000</span> Ft</p>
+        <input type="range" id="priceRange" min="1000" max="20000" step="500" value="5000">
+    </div>
+
+    <script>
+        // Ár csúszka és az érték dinamikus frissítése
+        const priceRange = document.getElementById('priceRange');
+        const priceDisplay = document.getElementById('price');
+
+        priceRange.addEventListener('input', function() {
+            priceDisplay.textContent = priceRange.value;
+        });
+
+        // Fülek váltása
+        const tabs = document.querySelectorAll('.tab');
+        const contents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Aktív fül eltávolítása
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+
+                // Az aktuális fül és tartalom aktívvá tétele
+                tab.classList.add('active');
+                const contentId = tab.id === 'homeTab' ? 'homeContent' : (tab.id === 'tab1' ? 'content1' : 'content2');
+                document.getElementById(contentId).classList.add('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
